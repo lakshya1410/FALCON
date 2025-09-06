@@ -1,4 +1,4 @@
-# AI-Powered Rockfall Prediction System 🚀
+# AI-Powered Rockfall Prediction System 🪨
 
 An advanced geological risk assessment and management system that combines FastAPI backend with a modern React frontend to provide real-time rockfall prediction and monitoring capabilities.
 
