@@ -30,7 +30,7 @@ const Navbar = ({ activeTab, setActiveTab }) => {
             </div>
             <div className="flex flex-col min-w-0">
               <h1 className="text-lg font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent whitespace-nowrap">
-                AI-Powered Rockfall Prediction Command Center
+                FALCON
               </h1>
               <p className="text-xs text-gray-400 flex items-center whitespace-nowrap">
                 <Zap className="w-3 h-3 mr-1 text-yellow-500 flex-shrink-0" />
