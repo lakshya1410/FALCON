@@ -1,4 +1,4 @@
-# Dependencies
+# Node dependencies
 node_modules/
 */node_modules/
 
@@ -33,11 +33,9 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# Coverage directory (Istanbul, nyc, etc.)
 coverage/
 *.lcov
-
-# nyc test coverage
 .nyc_output
 
 # Python
@@ -56,8 +54,9 @@ venv.bak/
 .tox/
 *.egg-info/
 dist-python/
+myenv/
 
-# Editor directories and files
+# Editor settings and files
 .vscode/*
 !.vscode/extensions.json
 .idea/
@@ -69,16 +68,15 @@ dist-python/
 *.sw?
 *~
 
-# OS generated files
+# OS-generated files
 Thumbs.db
-.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 
-# Local development
+# Local development caches
 *.local
 .cache/
 .parcel-cache/

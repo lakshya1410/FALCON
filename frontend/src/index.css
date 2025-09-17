@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import 'leaflet/dist/leaflet.css';
 @tailwind base;
 @tailwind components;
@@ -267,3 +268,8 @@ body {
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: xor;
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> 0e16b53b80a55a3038838e89d787e0e64dc51c59

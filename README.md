@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FALCON Command Center 🦅
 
 **F**orecasting **A**nd **L**anding zone **C**alculation for **O**ptimal **N**avigation
@@ -268,3 +269,6 @@ For support and questions:
 ---
 
 **FALCON Command Center** - Advanced geospatial analysis for safer navigation 🦅
+=======
+
+>>>>>>> 0e16b53b80a55a3038838e89d787e0e64dc51c59

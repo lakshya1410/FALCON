@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+<<<<<<< HEAD
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -30,8 +31,30 @@ export default {
       lineHeight: {
         'extra-tight': '1.1',
         'super-tight': '1.05',
+=======
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        gray: {
+          900: '#111827',
+          800: '#1f2937',
+          700: '#374151',
+          600: '#4b5563',
+          500: '#6b7280',
+          400: '#9ca3af',
+          300: '#d1d5db',
+        }
+>>>>>>> 0e16b53b80a55a3038838e89d787e0e64dc51c59
       }
     },
   },
   plugins: [],
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 0e16b53b80a55a3038838e89d787e0e64dc51c59
