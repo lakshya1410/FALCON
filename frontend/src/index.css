@@ -1,0 +1,269 @@
+@import 'leaflet/dist/leaflet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Gen Z Typography & Colors */
+:root {
+  --font-primary: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'DM Sans', sans-serif;
+  --font-display: 'Outfit', 'Clash Display', sans-serif;
+  --font-accent: 'Clash Display', 'Outfit', sans-serif;
+  
+  /* Gen Z Color Palette */
+  --neon-cyan: #00f5ff;
+  --neon-pink: #ff0080;
+  --neon-purple: #8b5cf6;
+  --neon-green: #00ff88;
+  --neon-orange: #ff6b35;
+  --dark-bg: #0a0a0f;
+  --card-bg: rgba(15, 15, 25, 0.8);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Modern Gen Z Typography Classes */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.font-body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Gen Z Modern Effects */
+.text-neon {
+  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.5));
+  animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+.text-cyber {
+  background: linear-gradient(135deg, var(--neon-green), var(--neon-cyan), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.text-vibe {
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-orange), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.neon-border {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
+              linear-gradient(45deg, var(--neon-cyan), var(--neon-pink)) border-box;
+  border-radius: 20px;
+}
+
+.glow-button {
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  transition: all 0.3s ease;
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 50px rgba(139, 92, 246, 0.8);
+  transform: translateY(-2px);
+}
+
+/* Custom styles for Leaflet popups */
+.leaflet-popup-content-wrapper {
+  @apply bg-slate-800 text-white rounded-lg;
+  border: 1px solid #475569;
+}
+
+.leaflet-popup-tip {
+  @apply bg-slate-800;
+  border: 1px solid #475569;
+}
+
+.custom-popup .leaflet-popup-content {
+  margin: 0;
+}
+
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Fix leaflet control styles */
+.leaflet-control-zoom a {
+  @apply bg-slate-800 text-white border-slate-600;
+}
+
+.leaflet-control-zoom a:hover {
+  @apply bg-slate-700 text-white;
+}
+
+/* Responsive map container */
+.leaflet-container {
+  font-family: inherit;
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 30px rgba(139, 92, 246, 0.4);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes neon-pulse {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.5));
+  }
+  100% {
+    filter: drop-shadow(0 0 25px rgba(0, 245, 255, 0.8)) drop-shadow(0 0 50px rgba(139, 92, 246, 0.4));
+  }
+}
+
+@keyframes cyber-glitch {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-2px);
+  }
+  40% {
+    transform: translateX(2px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  80% {
+    transform: translateX(1px);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Gradient Borders */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #f97316);
+  border-radius: 12px;
+  padding: 2px;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #f97316);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+}
