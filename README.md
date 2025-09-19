@@ -147,13 +147,13 @@ npm run install:all     # Install all dependencies
 
 **Frontend:**
 ```bash
-cd frontend && npm run build
+cd frontend : npm run dev
 ```
 
 **Backend:**
 ```bash
-cd backend && pip install -r requirements.txt
-uvicorn main:app --host 0.0.0.0 --port 8000
+cd backend ; pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ## 📄 License
