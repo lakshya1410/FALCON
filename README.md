@@ -1,274 +1,164 @@
-<<<<<<< HEAD
 # FALCON Command Center 🦅
 
-**F**orecasting **A**nd **L**anding zone **C**alculation for **O**ptimal **N**avigation
+**F**all **A**lert **L**andslide  **C**ondition  **O**bservation **N**etwork
 
-A comprehensive full-stack application for rockfall prediction, risk analysis, and route optimization using satellite imagery and machine learning.
+A full-stack application for rockfall prediction, risk analysis, and route optimization using drone imagery and machine learning.
 
-## 🏗️ Architecture
+## ⚡ Quick Start
 
-The project is structured as a modern full-stack application:
-
-```
-boltfalcon/
-├── frontend/                    # React + TypeScript Frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── PredictionWorkflow/
-│   │   │   │   ├── DataInjection.tsx
-│   │   │   │   ├── ModelPredicting.tsx
-│   │   │   │   └── RockfallForecast.tsx
-│   │   │   ├── AuthModal.tsx
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── InteractiveMap.tsx
-│   │   │   ├── Navigation.tsx
-│   │   │   ├── OptimizedRoute.tsx
-│   │   │   └── RiskAnalysisPanel.tsx
-│   │   ├── services/
-│   │   │   └── api.ts           # API service layer
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   ├── public/
-│   ├── vite.config.ts           # Vite configuration with proxy
-│   └── package.json
-├── backend/                     # FastAPI Python Backend
-│   ├── main.py                  # FastAPI application
-│   ├── requirements.txt         # Python dependencies
-│   └── .env                     # Environment variables
-├── start-dev.bat               # Windows development launcher
-├── package.json                # Root package for dev scripts
-└── README.md
-```
-
-## 🚀 Features
-
-### Frontend (React)
-- **Interactive Dashboard** with real-time monitoring
-- **Risk Analysis Panel** with severity mapping
-- **Route Optimization** with Google Maps integration  
-- **Prediction Workflow** for data injection and modeling
-- **Authentication System** with secure login/logout
-- **Responsive Design** with Tailwind CSS
-- **Modern Typography** with Google Fonts
-
-### Backend (FastAPI)
-- **RESTful API** with automatic documentation
-- **Authentication Endpoints** for user management
-- **Prediction Analysis** with ML model integration
-- **Real-time Monitoring** data streams
-- **File Upload** for satellite images and DEM data
-- **CORS Configuration** for seamless frontend integration
-
-## 🛠️ Tech Stack
-
-### Frontend
-- React 18.3.1 with TypeScript
-- Vite for build tooling
-- Tailwind CSS for styling
-- Lucide React for icons
-- Google Fonts (DM Sans, Plus Jakarta Sans, Outfit, Clash Display)
-
-### Backend
-- FastAPI with Python 3.8+
-- Pydantic for data validation
-- Uvicorn ASGI server with auto-reload
-- Python-multipart for file uploads
-- CORS middleware configured for development
-- Automatic API documentation generation
-
-## 📦 Installation
-
-### Prerequisites
-- Node.js 16+ and npm
-- Python 3.8+
-- pip package manager
-
-### Quick Start
-
-1. **Install all dependencies:**
 ```bash
-cd boltfalcon
+# Install dependencies
 npm run install:all
-```
 
-2. **Configure environment (optional):**
-```bash
-# Create backend/.env if needed
-cd backend
-echo SECRET_KEY=your-secret-key-here >> .env
-echo DATABASE_URL=sqlite:///./falcon.db >> .env
-```
-
-3. **Start development servers:**
-```bash
-# Option 1: Use batch script (Windows)
-start-dev.bat
-
-# Option 2: Use npm script
+# Start development servers
 npm run dev
 ```
 
-This will start both:
 - **Frontend:** http://localhost:5173
 - **Backend:** http://localhost:8000
 - **API Docs:** http://localhost:8000/docs
 
-### Manual Setup
+## 🏗️ Architecture
 
-**Frontend Development:**
+### Project Structure
+
+```
+FALCON/
+├── frontend/                           # React + TypeScript Frontend
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── PredictionWorkflow/
+│   │   │   │   ├── DataInjection.tsx   # File upload & data input
+│   │   │   │   ├── ModelPredicting.tsx # ML model execution
+│   │   │   │   └── RockfallForecast.tsx # Results visualization
+│   │   │   ├── AuthModal.tsx           # Authentication system
+│   │   │   ├── Dashboard.tsx           # Main control center
+│   │   │   ├── InteractiveMapNew.tsx   # Map visualization
+│   │   │   ├── Navigation.tsx          # Top navigation bar
+│   │   │   ├── OptimizedRoute.tsx      # Route planning
+│   │   │   ├── RiskAnalysisPanel.tsx   # Risk assessment display
+│   │   │   ├── LeftSidebar.js          # Dashboard sidebar
+│   │   │   ├── RightSidebar.js         # Dashboard controls
+│   │   │   └── SimpleMap.tsx           # Basic map component
+│   │   ├── services/
+│   │   │   └── api.ts                  # API service layer
+│   │   ├── lib/
+│   │   │   ├── completeAuth.ts         # Authentication logic
+│   │   │   └── firebaseConfig.ts       # Firebase configuration
+│   │   ├── App.tsx                     # Main application component
+│   │   ├── main.tsx                    # Application entry point
+│   │   └── index.css                   # Global styles
+│   ├── public/
+│   │   ├── falcon-logo.png             # Application logo
+│   │   └── index.html                  # HTML template
+│   ├── vite.config.ts                  # Vite build configuration
+│   ├── tailwind.config.js              # Tailwind CSS configuration
+│   ├── tsconfig.json                   # TypeScript configuration
+│   └── package.json                    # Frontend dependencies
+├── backend/                            # FastAPI Python Backend
+│   ├── main.py                         # FastAPI application & endpoints
+│   ├── models/                         # ML Model files
+│   │   ├── weather_pipeline.pkl        # Weather prediction model
+│   │   ├── crack_segmentation.h5       # Crack detection model
+│   │   └── DEM.pkl                     # Digital Elevation Model
+│   ├── weather_processor.py            # Weather analysis module
+│   ├── crack_segmentation.py           # Crack detection module
+│   ├── dem_processor.py                # DEM analysis module
+│   ├── requirements.txt                # Python dependencies
+│   └── .env                           # Environment variables
+├── package.json                        # Root development scripts
+└── README.md                          # Project documentation
+```
+
+### System Architecture
+
+#### Frontend Layer (React + TypeScript)
+- **Component-Based Architecture**: Modular React components with TypeScript
+- **State Management**: React hooks and context for global state
+- **Styling**: Tailwind CSS with glassmorphism design patterns
+- **Routing**: Client-side routing for SPA experience
+- **API Integration**: Axios-based service layer for backend communication
+
+#### Backend Layer (FastAPI + Python)
+- **RESTful API**: FastAPI framework with automatic OpenAPI documentation
+- **ML Pipeline**: Multi-model prediction system with three specialized models:
+  - **Weather Model**: Meteorological risk assessment
+  - **Crack Segmentation**: Computer vision for structural analysis
+  - **DEM Analysis**: Topographical and geological risk evaluation
+- **Data Processing**: File upload handling for drone images and elevation data
+- **Authentication**: JWT-based user authentication system
+- **CORS Configuration**: Cross-origin resource sharing for frontend integration
+
+#### Machine Learning Pipeline
+```
+Data Input → Preprocessing → Multi-Model Analysis → Risk Averaging → Results
+    ↓              ↓              ↓                    ↓            ↓
+Drone Images   Image/Data    [Weather Model]      Combined      Risk Zones
+DEM Data       Validation    [Crack Detection]    Risk Score    Visualizations
+Location       Formatting    [DEM Analysis]       Confidence    Recommendations
+```
+
+#### Data Flow Architecture
+1. **Data Injection**: User uploads drone images, DEM data, and location coordinates
+2. **Model Prediction**: Backend processes data through three ML models simultaneously
+3. **Risk Aggregation**: Individual model results are averaged for comprehensive assessment
+4. **Visualization**: Frontend displays risk zones, confidence levels, and recommendations
+5. **Route Optimization**: System generates safe navigation routes based on analysis
+
+## 🚀 Features
+
+### Frontend
+- Interactive dashboard with real-time monitoring
+- Risk analysis panel with severity mapping
+- Route optimization with interactive maps
+- Prediction workflow (Data Injection → Model Prediction → Results)
+- Authentication system with glassmorphism design
+
+### Backend
+- RESTful API with auto-documentation
+- ML model integration (Weather, Crack Segmentation, DEM)
+- Multi-model risk assessment with averaging
+- File upload for drone images and DEM data
+- Real-time data processing
+
+## 🛠️ Tech Stack
+
+**Frontend:** React 18, TypeScript, Vite, Tailwind CSS  
+**Backend:** FastAPI, Python 3.8+, Machine Learning Models  
+**ML Models:** Weather Pipeline, Crack Segmentation, DEM Analysis
+
+## 🔧 Commands
+
 ```bash
-cd frontend
-npm install
-npm run dev
-# Frontend will be available at http://localhost:5173
+npm run dev              # Start both servers
+npm run dev:frontend     # Frontend only
+npm run dev:backend      # Backend only
+npm run build           # Build for production
+npm run install:all     # Install all dependencies
 ```
 
-**Backend Development:**
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
-# Backend will be available at http://localhost:8000
-# API docs at http://localhost:8000/docs
-```
+## 📚 Key API Endpoints
 
-## 🔧 Development Scripts
-
-From the root directory:
-
-- `npm run dev` - Start both frontend and backend concurrently
-- `npm run dev:frontend` - Start only frontend server (Vite)
-- `npm run dev:backend` - Start only backend server (FastAPI)
-- `npm run build` - Build frontend for production
-- `npm run install:all` - Install all dependencies (frontend + backend)
-- `npm run install:frontend` - Install frontend dependencies only
-- `npm run install:backend` - Install backend dependencies only
-
-### Quick Start Scripts
-
-**Windows:**
-```cmd
-start-dev.bat
-```
-
-**Command Line:**
-```bash
-# Install all dependencies
-npm run install:all
-
-# Start development environment
-npm run dev
-```
-
-## 📚 API Documentation
-
-Once the backend is running, visit:
-- **Interactive API Docs:** http://localhost:8000/docs
-- **Alternative Docs:** http://localhost:8000/redoc
-
-### Key Endpoints
-
-#### Authentication
-- `POST /api/auth/login` - User login
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/logout` - User logout
-
-#### Prediction Analysis
-- `POST /api/prediction/analyze` - Analyze uploaded data
-- `GET /api/prediction/history` - Get prediction history
-
-#### Monitoring
-- `GET /api/monitoring/live-data` - Real-time monitoring data
-- `GET /api/monitoring/alerts` - System alerts
-
-## 🎨 UI Components
-
-### Typography System
-- **font-display** - Clash Display for logos and headings
-- **font-heading** - Plus Jakarta Sans for section titles
-- **font-body** - DM Sans for body text and UI elements
-
-### Key Components
-- `Navigation.tsx` - Top navigation with FALCON branding
-- `Dashboard.tsx` - Main control center with welcome notification
-- `AuthModal.tsx` - Login/register modal system
-- `RiskAnalysisPanel.tsx` - Risk assessment visualization
-- `OptimizedRoute.tsx` - Route planning interface
-- `InteractiveMap.tsx` - Map integration component
-
-### Prediction Workflow
-- `DataInjection.tsx` - Data upload and preprocessing
-- `ModelPredicting.tsx` - ML model execution
-- `RockfallForecast.tsx` - Results visualization
-
-## 🔐 Security Features
-
-- JWT token-based authentication
-- CORS protection with specific origins
-- Request validation with Pydantic
-- Secure file upload handling
-- Environment variable configuration
-
-## 🌟 Design Features
-
-- **Glassmorphism Effects** - Modern transparent UI elements
-- **Gradient Backgrounds** - Beautiful color transitions
-- **Responsive Design** - Mobile-first approach
-- **Single-Screen Layouts** - No scrolling required on main pages
-- **Professional Notifications** - Clean toast-style alerts
+- `POST /api/comprehensive-analysis` - Multi-model risk analysis
+- `POST /api/auth/login` - User authentication
+- `GET /api/monitoring/live-data` - Real-time monitoring
 
 ## 🚀 Deployment
 
-### Frontend Deployment
+**Frontend:**
 ```bash
-cd frontend
-npm run build
-# Deploy dist/ folder to your hosting service (Vercel, Netlify, etc.)
+cd frontend && npm run build
 ```
 
-### Backend Deployment
+**Backend:**
 ```bash
-cd backend
-pip install -r requirements.txt
-
-# Production with Gunicorn
-pip install gunicorn
-gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker
-
-# Or direct with Uvicorn
+cd backend && pip install -r requirements.txt
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-### Environment Variables
-Create `backend/.env` for production:
-```env
-SECRET_KEY=your-production-secret-key
-DATABASE_URL=your-production-database-url
-CORS_ORIGINS=https://yourdomain.com,https://www.yourdomain.com
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test both frontend and backend
-5. Submit a pull request
-
 ## 📄 License
 
-This project is licensed under the MIT License.
-
-## 🆘 Support
-
-For support and questions:
-- Check the API documentation at `/docs`
-- Review component code in `frontend/src/components/`
-- Examine API endpoints in `backend/main.py`
+MIT License
 
 ---
-
 **FALCON Command Center** - Advanced geospatial analysis for safer navigation 🦅
-=======
-
->>>>>>> 0e16b53b80a55a3038838e89d787e0e64dc51c59
