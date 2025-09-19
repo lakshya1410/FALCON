@@ -98,7 +98,22 @@ function App() {
 
   const handleDataInjectionNext = (data: any) => {
     setPredictionData(data);
-    setCurrentView('model-predicting');
+    // If we have comprehensive analysis data, skip ModelPredicting and go directly to results
+    if (data.skipModelPredicting && data.completeAnalysisData) {
+      // Create the results object in the format expected by RockfallForecast
+      const results = {
+        completeAnalysisData: data.completeAnalysisData,
+        timestamp: new Date().toISOString(),
+        // Add any other properties that RockfallForecast might expect
+        zones: [], // This will be overridden by combinedResults if comprehensive data exists
+        overallRisk: 'Processing',
+        confidence: 0
+      };
+      setPredictionResults(results);
+      setCurrentView('rockfall-forecast');
+    } else {
+      setCurrentView('model-predicting');
+    }
   };
 
   const handlePredictionComplete = (results: any) => {

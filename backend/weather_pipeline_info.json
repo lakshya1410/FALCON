@@ -1,0 +1,51 @@
+{
+  "model_type": "RandomForestClassifier",
+  "features": [
+    "latitude",
+    "longitude",
+    "temperature",
+    "humidity",
+    "pressure",
+    "rainfall",
+    "wind_speed"
+  ],
+  "risk_levels": [
+    "LOW",
+    "MEDIUM",
+    "HIGH",
+    "CRITICAL"
+  ],
+  "training_samples": 2000,
+  "feature_importance": [
+    {
+      "feature": "pressure",
+      "importance": 0.30289041088080976
+    },
+    {
+      "feature": "temperature",
+      "importance": 0.2476016630104592
+    },
+    {
+      "feature": "humidity",
+      "importance": 0.12645495223157016
+    },
+    {
+      "feature": "wind_speed",
+      "importance": 0.11343173302541142
+    },
+    {
+      "feature": "rainfall",
+      "importance": 0.08855145818872798
+    },
+    {
+      "feature": "latitude",
+      "importance": 0.06238856549076241
+    },
+    {
+      "feature": "longitude",
+      "importance": 0.058681217172259
+    }
+  ],
+  "created_date": "2025-09-19T14:58:17.230221",
+  "model_version": "1.0"
+}

@@ -87,3 +87,6 @@ ehthumbs.db
 # Temporary files
 *.tmp
 *.temp
+
+backend/falcon_env/
+
