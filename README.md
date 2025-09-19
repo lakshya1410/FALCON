@@ -147,7 +147,7 @@ npm run install:all     # Install all dependencies
 
 **Frontend:**
 ```bash
-cd frontend : npm run dev
+cd frontend ; npm run dev
 ```
 
 **Backend:**
