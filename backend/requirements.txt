@@ -19,3 +19,4 @@ matplotlib==3.7.2
 
 # Notification Dependencies
 twilio==8.10.0
+sendgrid==6.10.0
