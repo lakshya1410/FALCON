@@ -1,4 +1,4 @@
-# FALCON Command Center 🦅
+# FALCON 🦅
 
 **F**all **A**lert **L**andslide  **C**ondition  **O**bservation **N**etwork
 
