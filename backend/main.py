@@ -8,6 +8,8 @@ import datetime
 from pathlib import Path
 import base64
 from io import BytesIO
+from notification_service import notification_service
+from file_notification_service import file_notification_service
 from PIL import Image
 import numpy as np
 
@@ -477,6 +479,56 @@ async def complete_analysis(
             "recommendation": "Detailed analysis complete. Review individual model results for specific recommendations."
         }
 
+        # 🚨 AUTOMATIC NOTIFICATION SYSTEM 🚨
+        # Send email and SMS alerts when risk score exceeds threshold
+        try:
+            if overall_risk_score > notification_service.risk_threshold:  # Dynamic threshold check
+                print(f"🚨 HIGH RISK DETECTED: Score {overall_risk_score}/100 exceeds threshold {notification_service.risk_threshold} - Sending notifications...")
+                
+                # Prepare notification data
+                notification_data = {
+                    "risk_score": overall_risk_score,
+                    "risk_level": overall_risk_level,
+                    "site_name": site_name or f"Analysis Site ({latitude}, {longitude})",
+                    "timestamp": datetime.datetime.now().isoformat(),
+                    "contributing_factors": len([a for a in results["analyses"].values() if a.get("success")]),
+                    "latitude": float(latitude),
+                    "longitude": float(longitude)
+                }
+                
+                # Send notifications (both email and SMS)
+                notification_result = notification_service.send_risk_alert(notification_data)
+                
+                # Always log to file for reliability
+                file_logged = file_notification_service.log_notification(notification_data)
+                
+                # Add notification status to results
+                results["notification_sent"] = {
+                    "triggered": True,
+                    "risk_score": overall_risk_score,
+                    "email_sent": notification_result.get("email", False),
+                    "sms_sent": notification_result.get("sms", False),
+                    "file_logged": file_logged,
+                    "timestamp": notification_result.get("timestamp")
+                }
+                
+                print(f"✅ Notifications attempted: Email={notification_result.get('email')}, SMS={notification_result.get('sms')}, File={file_logged}")
+                print(f"📁 Alert details saved in notifications/ directory")
+            else:
+                print(f"ℹ️ Risk score {overall_risk_score}/100 is below notification threshold ({notification_service.risk_threshold})")
+                results["notification_sent"] = {
+                    "triggered": False,
+                    "risk_score": overall_risk_score,
+                    "reason": f"Below threshold ({notification_service.risk_threshold})"
+                }
+                
+        except Exception as notification_error:
+            print(f"❌ Notification system error: {str(notification_error)}")
+            results["notification_sent"] = {
+                "triggered": False,
+                "error": str(notification_error)
+            }
+
         return results
 
     except Exception as e:
@@ -496,6 +548,45 @@ async def get_live_monitoring_data():
         "systemStatus": "operational",
         "lastUpdate": "Real-time"
     }
+
+@app.post("/api/test-notification")
+async def test_notification_endpoint():
+    """Test endpoint to trigger notification manually"""
+    try:
+        # Create test notification data
+        notification_data = {
+            "risk_score": 85,
+            "risk_level": "HIGH",
+            "site_name": "Manual Test Site",
+            "timestamp": datetime.datetime.now().isoformat(),
+            "contributing_factors": 3,
+            "latitude": 24.27,
+            "longitude": 80.17
+        }
+        
+        print(f"🧪 Manual notification test triggered - Risk Score: {notification_data['risk_score']}")
+        
+        # Send notifications
+        notification_result = notification_service.send_risk_alert(notification_data)
+        file_logged = file_notification_service.log_notification(notification_data)
+        
+        return {
+            "success": True,
+            "message": "Test notification sent",
+            "results": {
+                "email_sent": notification_result.get("email", False),
+                "sms_sent": notification_result.get("sms", False),
+                "file_logged": file_logged,
+                "risk_score": notification_data["risk_score"],
+                "threshold": notification_service.risk_threshold
+            }
+        }
+        
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e)
+        }
 
 @app.get("/api/prediction/history")
 async def get_prediction_history():

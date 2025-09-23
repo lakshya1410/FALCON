@@ -4,7 +4,6 @@ import InteractiveMap from '../InteractiveMapNew';
 
 interface RockfallForecastProps {
   results: any;
-  onGetSafeRoute: () => void;
   onBack: () => void;
   onBackToDashboard: () => void;
 }
@@ -13,7 +12,6 @@ interface RockfallForecastProps {
 
 const RockfallForecast: React.FC<RockfallForecastProps> = ({ 
   results, 
-  onGetSafeRoute, 
   onBack, 
   onBackToDashboard 
 }) => {
@@ -42,7 +40,7 @@ const RockfallForecast: React.FC<RockfallForecastProps> = ({
   const combinedResults = useMemo(() => {
     // Add safety check for results
     if (!results) {
-      console.warn('⚠️ RockfallForecast: No results provided');
+      console.warn('⚠ RockfallForecast: No results provided');
       return {
         overallRisk: 'Unknown',
         confidence: 0,
@@ -413,12 +411,14 @@ const RockfallForecast: React.FC<RockfallForecastProps> = ({
 
           {/* Action Buttons */}
           <div className="space-y-3 mt-auto">
-            <button
-              onClick={onGetSafeRoute}
-              className="w-full py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg"
+            <a
+              href="https://safety-route-hd36-git-master-akshats-projects-92e467ae.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white rounded-lg text-sm font-semibold transition-all duration-200 flex items-center justify-center space-x-2 shadow-lg no-underline"
             >
               <span>Show Optimized Route</span>
-            </button>
+            </a>
             
             <div className="grid grid-cols-2 gap-2">
               <button

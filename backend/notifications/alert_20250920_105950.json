@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-09-20T10:59:50.354956",
+  "type": "alert",
+  "risk_data": {
+    "risk_score": 85,
+    "risk_level": "HIGH",
+    "site_name": "Test Mining Site Alpha",
+    "timestamp": "2025-09-20T10:59:06.089751",
+    "contributing_factors": 3,
+    "latitude": 24.27,
+    "longitude": 80.17
+  },
+  "alert_level": "HIGH_PRIORITY",
+  "requires_action": true,
+  "notification_methods": [
+    "file_log"
+  ]
+}

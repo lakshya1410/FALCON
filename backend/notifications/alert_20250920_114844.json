@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-09-20T11:48:44.086909",
+  "type": "alert",
+  "risk_data": {
+    "risk_score": 65,
+    "risk_level": "HIGH",
+    "site_name": "Live Test Site",
+    "timestamp": "2025-09-20T12:00:00",
+    "contributing_factors": 3,
+    "latitude": 24.27,
+    "longitude": 80.17
+  },
+  "alert_level": "MEDIUM_PRIORITY",
+  "requires_action": true,
+  "notification_methods": [
+    "file_log"
+  ]
+}

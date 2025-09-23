@@ -1,0 +1,28 @@
+🚨 FALCON GEOLOGICAL RISK ALERT 🚨
+================================================
+
+⚠️  ALERT LEVEL: MEDIUM
+📊 RISK SCORE: 49.1/100
+📍 LOCATION: lko
+🕐 TIME: 2025-09-20T16:02:20.418750
+
+🔍 ANALYSIS SUMMARY:
+- Contributing Factors: 3 models
+- Coordinates: 20.85, 73.33
+
+⚡ IMMEDIATE ACTIONS REQUIRED:
+- Review site conditions immediately
+- Consider evacuation if risk level is CRITICAL
+- Activate emergency response protocols
+- Access FALCON dashboard for detailed analysis
+- Contact site safety personnel
+
+🔔 NOTIFICATION STATUS:
+- File logged: ✅ SUCCESS
+- Email sent: ❌ FAILED (Connection timeout)
+- SMS sent: ❌ FAILED (Unverified number)
+
+This is an automated alert from the FALCON Geological Risk Assessment System.
+Generated on: 2025-09-20 16:02:23
+
+================================================
